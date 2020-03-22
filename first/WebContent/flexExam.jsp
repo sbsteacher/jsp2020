@@ -11,6 +11,7 @@
 		height: 400px;
 		background-color: #bdc3c7;
 		display: flex;		
+		flex-direction: column;
 	}
 	
 	.item {
