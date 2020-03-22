@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 <style>
 	#container {
+		width: 400px;
+		height: 400px;
+		background-color: #bdc3c7;
 		display: flex;		
 	}
 	
