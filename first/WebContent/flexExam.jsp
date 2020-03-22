@@ -6,30 +6,21 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	body {		
-		margin: 0;
-	}
-	#aa1 {
-		width: 300px;
-		height: 500px;
-		background-color: #e1b12c;
-		padding: 20px;
+	#container {
+		display: flex;		
 	}
 	
-	#aa2 {
-		width: 200px;
-		height: 300px;
-		background-color: #9c88ff;
-		margin: 20px;
+	.item {
+		background-color: #e1b12c;
 	}
+	
 </style>
 </head>
 <body>
-	<div id="aa1">
-		안녕
-	</div>
-	<div id="aa2">
-		hello
+	<div id="container">
+		<div class="item">안녕</div>
+		<div class="item">안녕</div>
+		<div class="item">안녕</div>
 	</div>
 </body>
 </html>
