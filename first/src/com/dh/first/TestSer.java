@@ -29,6 +29,7 @@ public class TestSer extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jsp/test.jsp");
+		request.setAttribute("age", 15);
 		rd.forward(request, response);
 	}
 
