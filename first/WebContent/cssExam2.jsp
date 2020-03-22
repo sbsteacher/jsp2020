@@ -7,13 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="common.css">
-<style>	
-	#aa {
-		color: blue;
-	}	
-</style>
+
 </head>
 <body>
-	<div id="aa" style="color:red">div입니다.</div>
+	<div id="aa">div입니다.</div>
 </body>
 </html>
