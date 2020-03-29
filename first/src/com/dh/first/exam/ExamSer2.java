@@ -20,6 +20,7 @@ public class ExamSer2 extends HttpServlet {
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/exam/exam2.jsp");
 		request.setAttribute("fileName", "exam2jsp");
+		request.setAttribute("abc", nm);
 		rd.forward(request, response);
 	}	
 

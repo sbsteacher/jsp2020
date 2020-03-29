@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/exam")
 public class ExamSer extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-   	
+   		
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/exam/exam.jsp");
 		rd.forward(request, response);
@@ -22,6 +22,8 @@ public class ExamSer extends HttpServlet {
 		System.out.println("exam - doPost");
 		String nm = request.getParameter("nm");
 		String age = request.getParameter("age");
+				
+		int intAge = Integer.parseInt(age);
 		
 		System.out.println("nm : " + nm);
 		System.out.println("age : " + age);	
