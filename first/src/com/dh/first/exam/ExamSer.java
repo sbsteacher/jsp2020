@@ -27,8 +27,11 @@ public class ExamSer extends HttpServlet {
 		
 		System.out.println("nm : " + nm);
 		System.out.println("age : " + age);	
-		
-		response.sendRedirect("/exam2?nm=" + nm);
+				
+		RequestDispatcher rd = request.getRequestDispatcher("/exam2");
+		request.setAttribute("rNm", nm);
+		rd.forward(request, response);
+		//response.sendRedirect("/exam2?nm=" + nm);
 	}
 
 }
