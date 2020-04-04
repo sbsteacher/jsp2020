@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dh.first.db.TestDAO;
+
 @WebServlet("/write")
 public class TestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -22,9 +24,14 @@ public class TestServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String pk = request.getParameter("pk");
+		int intPk = Integer.parseInt(pk);
 		String val = request.getParameter("val");
-		System.out.println("pk : " + pk);
-		System.out.println("val : " + val);
+		TestDAO.insert(intPk, val);
 	}
 
 }
+
+
+
+
+
