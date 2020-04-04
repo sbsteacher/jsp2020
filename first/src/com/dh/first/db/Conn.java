@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class Conn {
+		
 	public static Connection getCon() throws Exception {
 		final String dbURL = "jdbc:mysql://127.0.0.1:4406/first?serverTimezone=UTC";
 		final String dbID = "root";

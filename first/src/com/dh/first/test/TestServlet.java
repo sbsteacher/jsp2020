@@ -20,6 +20,7 @@ public class TestServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String pk = request.getParameter("pk");
 		String val = request.getParameter("val");
 		System.out.println("pk : " + pk);

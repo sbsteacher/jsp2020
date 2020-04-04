@@ -16,12 +16,14 @@ public class ExamSer2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			Conn.getCon();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		/*
+		 * try {  
+		 * 		Conn.getCon();
+		 * 
+		 * 
+		 * } catch (Exception e) { // TODO Auto-generated catch block
+		 * e.printStackTrace(); }
+		 */
 		String nm = request.getParameter("nm");
 		System.out.println("exam2 nm : " + nm);
 		
@@ -38,6 +40,8 @@ public class ExamSer2 extends HttpServlet {
 		request.setAttribute("fileName", "exam2jsp");
 		request.setAttribute("abc", nm);
 		rd.forward(request, response);
+		
+		response.sendRedirect("");
 	}
 
 }
