@@ -20,13 +20,15 @@ public class TestServlet extends HttpServlet {
 		rd.forward(request, response);
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String pk = request.getParameter("pk");
 		int intPk = Integer.parseInt(pk);
 		String val = request.getParameter("val");
-		TestDAO.insert(intPk, val);
+		TestVO vo = new TestVO();
+		vo.setPk(intPk);
+		vo.setVal(val);
+		TestDAO.insert(vo);
 	}
 
 }
