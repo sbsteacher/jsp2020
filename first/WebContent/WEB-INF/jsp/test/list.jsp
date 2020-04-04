@@ -12,6 +12,8 @@
 <title>리스트</title>
 </head>
 <body>
+
+
 	<% for(TestVO vo : list) { %>
 		<%=vo.getPk() %> | <%=vo.getVal() %> | <%=vo.getR_dt() %> <br>
 	<% } %>

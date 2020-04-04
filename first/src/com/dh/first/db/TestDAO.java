@@ -40,7 +40,7 @@ public class TestDAO {
 		} catch (Exception e) {			
 			e.printStackTrace();
 		} finally {
-			Conn.close(con, ps, null);	
+			Conn.close(con, ps, rs);	
 		}
 		
 		return list;
