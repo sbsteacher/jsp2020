@@ -14,7 +14,9 @@
 	<form action="/mod" method="post">
 		<div>번호: <%=vo.getPk() %></div>
 		<div>내용: <textarea name="val"><%=vo.getVal() %></textarea></div>
+		<input type="hidden" name="pk" value="<%=vo.getPk() %>">
 		<div><input type="submit" value="수정"></div>
 	</form>
+	
 </body>
 </html>

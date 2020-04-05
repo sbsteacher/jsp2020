@@ -37,8 +37,7 @@ public class TestDAO {
 		
 		return vo;
 	}
-	
-	
+		
 	public static List<TestVO> getList() {
 		List<TestVO> list = new ArrayList();
 						
@@ -73,6 +72,26 @@ public class TestDAO {
 		
 		return list;
 	}
+	public static void update(TestVO vo) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		
+		String sql = " UPDATE test "
+				+ " SET val = ? "
+				+ " WHERE pk = ? ";
+	
+		try {
+			con = Conn.getCon();			
+			ps = con.prepareStatement(sql);
+			ps.setString(1, vo.getVal());
+			ps.setInt(2, vo.getPk());			
+			ps.execute();
+		} catch (Exception e) {			
+			e.printStackTrace();
+		} finally {
+			Conn.close(con, ps, null);	
+		}
+	}
 	
 	public static void insert(TestVO vo) {		
 		if(vo.getVal().indexOf(";") > 0) {
@@ -86,8 +105,7 @@ public class TestDAO {
 				+ " (pk, val)"
 				+ " VALUES"
 				+ " (?, ?) ";		
-		
-		System.out.println("sql : " + sql);
+				
 		try {
 			con = Conn.getCon();			
 			ps = con.prepareStatement(sql);

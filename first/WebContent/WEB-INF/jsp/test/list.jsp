@@ -37,7 +37,7 @@
 		function del(pk) {			
 			if(confirm('번호' + pk +'를 삭제하시겠습니까?')) {
 				location.href="/del?pk=" + pk
-			}					
+			}
 		}
 		
 		function mod(pk) {

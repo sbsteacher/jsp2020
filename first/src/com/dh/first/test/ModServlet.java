@@ -18,16 +18,31 @@ public class ModServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pk = request.getParameter("pk");
 		int intPk = Integer.parseInt(pk);
-		
-		TestVO vo = TestDAO.getOne(intPk);
-		request.setAttribute("vo", vo);
+				
+		request.setAttribute("vo", TestDAO.getOne(intPk));
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/test/mod.jsp");		
 		rd.forward(request, response);
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		request.setCharacterEncoding("UTF-8");
+		String pk = request.getParameter("pk");
+		int intPk = Integer.parseInt(pk);
+		String val = request.getParameter("val");
+		TestVO vo = new TestVO();
+		vo.setPk(intPk);
+		vo.setVal(val);
+		TestDAO.update(vo);
+		
+		response.sendRedirect("/list");
 	}
 
 }
+
+
+
+
+
+
+
