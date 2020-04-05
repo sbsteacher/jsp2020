@@ -29,6 +29,8 @@ public class TestServlet extends HttpServlet {
 		vo.setPk(intPk);
 		vo.setVal(val);
 		TestDAO.insert(vo);
+		
+		response.sendRedirect("/list");
 	}
 
 }
