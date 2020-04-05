@@ -10,7 +10,35 @@ import java.util.List;
 import com.dh.first.test.TestVO;
 
 public class TestDAO {
+	public static TestVO getOne(int pk) {
+		TestVO vo = new TestVO();
 		
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = " SELECT * FROM test WHERE pk = ? ";
+		
+		try {
+			con = Conn.getCon();			
+			ps = con.prepareStatement(sql);		
+			ps.setInt(1, pk);			
+			rs = ps.executeQuery();						
+			while(rs.next()) {				
+				String val = rs.getString("val");				
+				vo.setPk(pk);
+				vo.setVal(val);
+			}		
+		} catch (Exception e) {			
+			e.printStackTrace();
+		} finally {
+			Conn.close(con, ps, rs);	
+		}
+		
+		return vo;
+	}
+	
+	
 	public static List<TestVO> getList() {
 		List<TestVO> list = new ArrayList();
 						
@@ -73,5 +101,40 @@ public class TestDAO {
 		}
 	}
 	
+	//삭제
+	public static void delete(int pk) {		
+		Connection con = null;
+		PreparedStatement ps = null;
+		
+		String sql = " DELETE FROM test WHERE pk = ? ";
+		
+		try {
+			con = Conn.getCon();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, pk);
+			
+			ps.execute();
+		} catch (Exception e) {			
+			e.printStackTrace();
+		} finally {
+			Conn.close(con, ps, null);
+		}
+	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
