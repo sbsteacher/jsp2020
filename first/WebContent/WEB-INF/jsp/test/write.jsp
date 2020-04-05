@@ -16,9 +16,11 @@
 		function check() {			
 			if(frm.pk.value == '') {
 				alert('번호를 입력해 주세요')
+				frm.pk.focus()
 				return false	
 			} else if(frm.val.value == '') {
 				alert('내용을 입력해 주세요')
+				frm.val.focus()
 				return false	
 			}
 			
