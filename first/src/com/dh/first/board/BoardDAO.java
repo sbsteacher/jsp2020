@@ -47,7 +47,9 @@ public class BoardDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		String sql = " SELECT i_board, title, m_dt FROM board ";
+		String sql = " SELECT i_board, title, r_dt"
+				+ " FROM board"
+				+ " ORDER BY i_board DESC ";
 		
 		try {
 			con = Conn.getCon();			
@@ -57,12 +59,12 @@ public class BoardDAO {
 			while(rs.next()) {
 				int i_board = rs.getInt("i_board");
 				String title = rs.getString("title");
-				String m_dt = rs.getString("title");
+				String r_dt = rs.getString("r_dt");
 				
 				BoardVO vo = new BoardVO();
 				vo.setI_board(i_board);
 				vo.setTitle(title);
-				vo.setM_dt(m_dt);
+				vo.setR_dt(r_dt);
 				
 				list.add(vo);
 			}		

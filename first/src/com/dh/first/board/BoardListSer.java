@@ -1,6 +1,7 @@
 package com.dh.first.board;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,6 +18,12 @@ public class BoardListSer extends HttpServlet {
 		String regmodresult = request.getParameter("regmodresult");
 		if(regmodresult != null && regmodresult.equals("0")) {
 			request.setAttribute("msg", "에러가 발생되었습니다.");
+		}
+		
+		List<BoardVO> list = BoardDAO.getBoardList();
+		
+		for(BoardVO vo : list) {
+			System.out.println(vo.getTitle());
 		}
 		
 		request.setAttribute("list", BoardDAO.getBoardList());
