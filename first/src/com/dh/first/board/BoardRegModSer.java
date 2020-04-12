@@ -49,10 +49,12 @@ public class BoardRegModSer extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String i_board = request.getParameter("i_board");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		String pw = request.getParameter("pw");
 		
+		System.out.println("i_board: " + i_board.equals(""));
 		System.out.println("title: " + title);
 		System.out.println("content: " + content);
 		System.out.println("pw: " + pw);
@@ -62,14 +64,21 @@ public class BoardRegModSer extends HttpServlet {
 		vo.setContent(content);
 		vo.setPw(pw);
 		
-		int result = BoardDAO.boardInsert(vo);
-		response.sendRedirect("/board/list?regmodresult=" + result);
+		if(i_board.equals("")) { //등록
+			int result = BoardDAO.boardInsert(vo);
+			response.sendRedirect("/board/list?regmodresult=" + result);	
 		
-		
-		System.out.println("result : " + result);
-		
+		} else { //수정
+			int intBoard = Util.parseStringToInt(i_board);
+			
+			vo.setI_board(intBoard);
+			
+			BoardDAO.updBoard(vo); //무조건 수정!!!
+			
+			//디테일 이동!!
+			
+		}
 	}
-
 }
 
 

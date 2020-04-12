@@ -10,6 +10,7 @@
 	<h1>글쓰기</h1>
 	<div>
 		<form action="/board/regmod" id="frm" method="post" onsubmit="return chk()">
+			<input type="hidden1" name="i_board" value="${data.i_board}">
 			<div><input type="text" name="title" placeholder="제목" value="${data.title}"></div>
 			<div>
 				<textarea name="content" placeholder="내용">${data.content}</textarea>
