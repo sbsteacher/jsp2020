@@ -41,7 +41,7 @@
 		}
 		
 		function clkMod() {
-			
+			location.href = "/board/regmod?pw=" + pw.value + "&i_board=" + ${data.i_board}
 		}
 	</script>
 </body>

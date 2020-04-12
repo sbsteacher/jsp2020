@@ -51,11 +51,17 @@ public class BoardDAO {
 				+ " FROM board"
 				+ " WHERE i_board = ? ";
 		
+		if(param.getPw() != null) {
+			sql += " and pw = ? ";
+		}
+		
 		try {
 			con = Conn.getCon();			
 			ps = con.prepareStatement(sql);	
 			ps.setInt(1, param.getI_board());
-			
+			if(param.getPw() != null) {
+				ps.setString(2, param.getPw());
+			}
 			rs = ps.executeQuery();
 						
 			while(rs.next()) {	

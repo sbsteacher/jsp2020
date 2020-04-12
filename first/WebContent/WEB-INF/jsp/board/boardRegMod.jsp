@@ -10,9 +10,9 @@
 	<h1>글쓰기</h1>
 	<div>
 		<form action="/board/regmod" id="frm" method="post" onsubmit="return chk()">
-			<div><input type="text" name="title" placeholder="제목"></div>
+			<div><input type="text" name="title" placeholder="제목" value="${data.title}"></div>
 			<div>
-				<textarea name="content" placeholder="내용"></textarea>
+				<textarea name="content" placeholder="내용">${data.content}</textarea>
 			</div>
 			<div>
 				<input type="password" name="pw" placeholder="비밀번호">
