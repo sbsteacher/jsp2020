@@ -34,6 +34,8 @@ public class BoardDAO {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			Conn.close(con, ps, null);
 		}
 		
 		return result;
@@ -123,6 +125,32 @@ public class BoardDAO {
 		return list;
 	}
 	
+	public static void updBoard(BoardVO param) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		
+		String sql = " UPDATE board "
+				+ " SET title = ? "
+				+ " , content = ? "
+				+ " , pw = ? "
+				+ " , m_dt = now() "
+				+ " WHERE i_board = ? ";		
+		try {
+			con = Conn.getCon();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, param.getTitle());
+			ps.setString(2, param.getContent());
+			ps.setString(3,  param.getPw());
+			ps.setInt(4, param.getI_board());
+			ps.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			Conn.close(con, ps, null);	
+		}
+	}	
+	
 	public static int delBoard(BoardVO param) {
 		int result = 0;
 		
@@ -142,6 +170,8 @@ public class BoardDAO {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			Conn.close(con, ps, null);	
 		}
 		return result;
 	}

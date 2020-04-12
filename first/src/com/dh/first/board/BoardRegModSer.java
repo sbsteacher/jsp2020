@@ -69,14 +69,10 @@ public class BoardRegModSer extends HttpServlet {
 			response.sendRedirect("/board/list?regmodresult=" + result);	
 		
 		} else { //수정
-			int intBoard = Util.parseStringToInt(i_board);
-			
-			vo.setI_board(intBoard);
-			
-			BoardDAO.updBoard(vo); //무조건 수정!!!
-			
-			//디테일 이동!!
-			
+			int intBoard = Util.parseStringToInt(i_board);			
+			vo.setI_board(intBoard);			
+			BoardDAO.updBoard(vo); //무조건 수정!!!			
+			response.sendRedirect("/board/detail?i_board=" + i_board);			
 		}
 	}
 }
