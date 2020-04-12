@@ -116,6 +116,29 @@ public class BoardDAO {
 		
 		return list;
 	}
+	
+	public static int delBoard(BoardVO param) {
+		int result = 0;
+		
+		Connection con = null;
+		PreparedStatement ps = null;
+		
+		String sql = " DELETE FROM board WHERE i_board = ? and pw = ? ";
+		
+		try {
+			con = Conn.getCon();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, param.getI_board());
+			ps.setString(2, param.getPw());
+						
+			result = ps.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
 }
 
 

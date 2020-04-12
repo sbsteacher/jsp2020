@@ -13,7 +13,7 @@
 			<div>잘 못 된 접근입니다!!</div>
 		</c:when>
 		<c:otherwise>
-			
+			<div style="color:red;">${msg }</div>
 			<div>제목 : ${data.title}</div>
 			<div>내용 : ${data.content }</div>
 			<div>등록일시 : ${data.r_dt }</div>
