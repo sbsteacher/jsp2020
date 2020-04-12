@@ -10,7 +10,7 @@ import com.dh.first.db.Conn;
 import com.dh.first.test.TestVO;
 
 public class BoardDAO {
-
+	
 	public static int boardInsert(BoardVO vo) {
 		int result = 0;
 		
@@ -40,6 +40,46 @@ public class BoardDAO {
 	}
 	
 
+	public static BoardVO getBoardOne(BoardVO param) {
+		BoardVO vo = null;
+		
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = " SELECT title, content, r_dt, m_dt "
+				+ " FROM board"
+				+ " WHERE i_board = ? ";
+		
+		try {
+			con = Conn.getCon();			
+			ps = con.prepareStatement(sql);	
+			ps.setInt(1, param.getI_board());
+			
+			rs = ps.executeQuery();
+						
+			while(rs.next()) {	
+				vo = new BoardVO();
+				String title = rs.getString("title");
+				String content = rs.getString("content");
+				String r_dt = rs.getString("r_dt");
+				String m_dt = rs.getString("m_dt");
+								
+				vo.setI_board(param.getI_board()); //디테일 화면에서 삭제 or 수정 때 사용하기 위해
+				vo.setTitle(title);
+				vo.setContent(content);
+				vo.setR_dt(r_dt);
+				vo.setM_dt(m_dt);
+			}		
+		} catch (Exception e) {			
+			e.printStackTrace();
+		} finally {
+			Conn.close(con, ps, rs);	
+		}
+		
+		return vo;
+	}
+	
 	public static List<BoardVO> getBoardList() {
 		List<BoardVO> list = new ArrayList();
 		

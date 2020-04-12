@@ -39,7 +39,7 @@
 	</div>
 	<script>
 		function moveDetail(i_board) {
-			alert(i_board)
+			location.href = '/board/detail?i_board=' + i_board
 		}
 	</script>
 </body>
